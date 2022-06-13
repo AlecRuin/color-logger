@@ -1,5 +1,4 @@
 const settings= require("./settings.json")
-console.log(settings.showContext);
 /**
  * console.logs very easy-to-read messages to the console. 
  * 
