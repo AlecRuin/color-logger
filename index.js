@@ -15,45 +15,39 @@ module.exports.print=(msg,error,severity=1,isClient=true)=>{
     if (settings.showContext){
         switch (isClient){
             case false:
-                (settings.useEmojis) ? Context="[🖥️]" : Context="[SERVER]"
+                (settings.useEmojis) ? Context="[🖥️]" : Context="\x1b[34m[SERVER]"
                 break;
             default:
-                (settings.useEmojis) ? Context="[👨‍💻]" : Context="[CLIENT]";
+                (settings.useEmojis) ? Context="[👨‍💻]" : Context="\x1b[32m[CLIENT]";
                 break;
         }  
+    }
+    switch (severity){
+        case 1:
+            SeverityMsg=`[NONE${(settings.useEmojis) ? "/❔" :""}]`
+            break;
+        case 2:
+            SeverityMsg=`[LOW${(settings.useEmojis) ? "/⚠️" :""}]`
+            break;
+        case 3:
+            SeverityMsg=`[MINOR${(settings.useEmojis) ? "/❗" :""}]`
+            break;
+        case 4:
+            SeverityMsg=`[MAJOR${(settings.useEmojis) ? "/❗❗" :""}]`
+            break;
+        case 5:
+            SeverityMsg=`[CRITICAL${(settings.useEmojis) ? "/❗❗❗" :""}]`
+            break;
+        default:
+            SeverityMsg=`\x1b[37m[LOG${(settings.useEmojis) ? "/📜" :""}]`
+            break;
     }
     var stack = error.stack.toString().split(/\r\n|\n/)[1].split(" ");
     stack=stack[stack.length-1]
     var Origin=`[${stack.slice(1,stack.length-1).slice(stack.lastIndexOf("\\"),stack.length)}]`
+    if (!msg) throw new Error("Message not provided by ",Origin)
     if (msg === '') {
         msg = '"👨‍💻"';
     }
-    console.log(`${Context} ${SeverityMsg} ${Origin}`);  
+    console.log(`${Context} \x1b[37m${SeverityMsg} \x1b[1m${msg} \x1b[30m${Origin}\x1b[0m`);  
 }
-/*
-🖥️
-function Module.Print(Severity,Origin,Message)
-	local SeverityMsg
-	if Severity ==0 then
-		SeverityMsg=" [ LOG/📜 ] "
-	elseif Severity ==1 then
-		SeverityMsg=" [ NONE/❔ ] "
-	elseif Severity ==2 then
-		SeverityMsg=" [ LOW/⚠️ ] "
-	elseif Severity ==3 then
-		SeverityMsg=" [ MINOR/❗ ] "
-	elseif Severity ==4 then
-		SeverityMsg=" [ MAJOR/❗❗ ] "
-	elseif Severity ==5 then
-		SeverityMsg=" [ CRITICAL/❗❗❗ ] "
-	else
-		SeverityMsg=" [ NONE/❔ ] "
-	end
-	if typeof(Message)==table then
-		return "[👨‍💻]"..SeverityMsg.."[ " ..Origin.." ]: ",Message
-	else
-		Message=string.upper(Message)
-		return "[👨‍💻]"..SeverityMsg.."[ " ..Origin.." ]: "..Message
-	end
-end
-*/
