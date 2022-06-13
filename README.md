@@ -33,7 +33,7 @@ Simply add to package.json file or install through the command line.
 or
 ```json
 "dependencies": {
-    "@AlecRuin/color-logger":"1.0.0"
+    "@AlecRuin/color-logger":"1.0.1"
   }
 ```
 
@@ -41,7 +41,7 @@ or
 
 Once you require the project, simply call the print statement and pass through the context, severity, and message 
 
-(Context meaning server/client. NOT THE LINE FROM WHICH THE CALLWAS MADE)
+(Context meaning server/client. NOT THE LINE FROM WHICH THE CALL WAS MADE)
 
 
 ## License 
