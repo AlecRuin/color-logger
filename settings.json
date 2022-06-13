@@ -1,5 +1,23 @@
 {
     "showContext":true,
     "useEmojis":false,
-    "toUpper":true
+    "toUpper":true,
+    "0":{
+        "keyword":"LOG"
+    },
+    "1":{
+        "keyword":"NONE"
+    },
+    "2":{
+        "keyword":"LOW"  
+    },
+    "3":{
+        "keyword":"MINOR"  
+    },
+    "4":{
+        "keyword":"MAJOR"  
+    },
+    "5":{
+        "keyword":"CRITICAL"  
+    }
 }
