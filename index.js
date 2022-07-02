@@ -8,7 +8,7 @@ const settings= JSON.parse(JSON.stringify(require("./settings.json")))
  * @param {Boolean} [isClient] A boolean value on if the log was called on the client side, or server side. Defaults to client
  */
 module.exports.print=(msg,error,options={isClient:true,severity:0})=>{
-    if (settings.toUpper) msg.toUpperCase()
+    if (settings.toUpper && typeof msg==="string") msg.toUpperCase()
     var Context=""
     var SeverityMsg=""
     if (settings.showContext){
