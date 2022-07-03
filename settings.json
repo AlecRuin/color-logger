@@ -2,6 +2,7 @@
     "showContext":true,
     "useEmojis":false,
     "toUpper":true,
+    "hideOnProduction":true,
     "0":{
         "keyword":"LOG"
     },

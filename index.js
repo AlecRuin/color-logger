@@ -1,4 +1,6 @@
 const settings= JSON.parse(JSON.stringify(require("./settings.json")))
+const dotenv = require("dotenv")
+dotenv.config()
 /**
  * console.logs very easy-to-read messages to the console. 
  * 
@@ -8,6 +10,7 @@ const settings= JSON.parse(JSON.stringify(require("./settings.json")))
  * @param {Boolean} [isClient] A boolean value on if the log was called on the client side, or server side. Defaults to client
  */
 module.exports.print=(msg,error,options={isClient:true,severity:0})=>{
+    if (settings.hideOnProduction && process.env.NODE_ENV ==="production") return null
     if (settings.toUpper && typeof msg==="string") msg.toUpperCase()
     var Context=""
     var SeverityMsg=""

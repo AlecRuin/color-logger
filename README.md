@@ -28,12 +28,12 @@ This package uses colors, emojis, severity, and context to allow the user to eas
 
 Simply add to package.json file or install through the command line.
 ```sh
-    npm install @alecruin/color-logger@1.0.1
+    npm install @alecruin/color-logger@1.0.3
 ```
 or
 ```json
 "dependencies": {
-    "@AlecRuin/color-logger":"1.0.1"
+    "@AlecRuin/color-logger":"1.0.3"
   }
 ```
 
