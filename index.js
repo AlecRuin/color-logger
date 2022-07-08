@@ -9,7 +9,7 @@ const settings= JSON.parse(JSON.stringify(require("./settings.json")))
  * @param {String} [environment] A string you may pass to differentiate whether app is on production or development. simply pass process.env.NODE_ENV to automate this. Defaults to development 
  */
 module.exports.print=(msg,error,options={isClient:true,severity:0,environment:"development"})=>{
-    if (settings.hideOnProduction && environment ==="production" &&isClient==false) return null
+    if (settings.hideOnProduction && options.environment ==="production" && options.isClient==false) return null
     if (settings.toUpper && typeof msg==="string") msg.toUpperCase()
     var Context=""
     var SeverityMsg=""
