@@ -3,7 +3,7 @@
   "repository": {
     "url": "git://github.com/AlecRuin/color-logger.git"
   },
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^16.0.1"
-  }
+  "license": "ISC"
 }

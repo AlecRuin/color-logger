@@ -1,6 +1,4 @@
 const settings= JSON.parse(JSON.stringify(require("./settings.json")))
-const dotenv = require("dotenv")
-dotenv.config()
 /**
  * console.logs very easy-to-read messages to the console. 
  * 
@@ -8,9 +6,10 @@ dotenv.config()
  * @param {Error} error You must pass through a newly created Error to log the line from which the call was made
  * @param {Number} [severity] A number ranging in 1-5 on how serious the bug may be. Defaults to 0
  * @param {Boolean} [isClient] A boolean value on if the log was called on the client side, or server side. Defaults to client
+ * @param {String} [environment] A string you may pass to differentiate whether app is on production or development. simply pass process.env.NODE_ENV to automate this. Defaults to development 
  */
-module.exports.print=(msg,error,options={isClient:true,severity:0})=>{
-    if (settings.hideOnProduction && process.env.NODE_ENV ==="production") return null
+module.exports.print=(msg,error,options={isClient:true,severity:0,environment:"development"})=>{
+    if (settings.hideOnProduction && environment ==="production") return null
     if (settings.toUpper && typeof msg==="string") msg.toUpperCase()
     var Context=""
     var SeverityMsg=""
