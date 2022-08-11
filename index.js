@@ -12,6 +12,7 @@ module.exports.print=(msg,error,options={isClient:true,severity:0,environment:"d
     if (settings.hideOnProduction && options.environment ==="production" && options.isClient==false) return null
     if (settings.toUpper && typeof msg==="string") msg.toUpperCase()
     if (typeof msg==="object") msg=JSON.stringify(msg,null," ")
+    msg=JSON.stringify(msg,null," ")
     var Context=""
     var SeverityMsg=""
     if (settings.showContext){
