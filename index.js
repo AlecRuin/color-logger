@@ -45,7 +45,9 @@ module.exports.print=(msg,error,options={isClient:true,severity:0,environment:"d
     }
     var stack = error.stack.toString().split(/\r\n|\n/)[1].split(" ");
     stack=stack[stack.length-1]
-    var Origin=`[${stack.slice(1,stack.length-1).slice(stack.lastIndexOf("\\"),stack.length)}]`
+    var filter
+    (stack.search("/")===-1)?filter="\\":filter="/"
+    var Origin=`[${stack.slice(1,stack.length-1).slice(stack.lastIndexOf(filter),stack.length)}]`
     if (!msg) throw new Error("Message not provided by ",Origin)
     if (msg === '') {
         msg = '"👨‍💻"';
